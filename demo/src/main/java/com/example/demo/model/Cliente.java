@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Pessoa {
     private String nome;
-    private List<Veiculo> dadosVeiculo;
+    private List<Veiculo> veiculo;
     private List<Orcamento> orcamento;
 
     public void setNome(String nome) {
@@ -15,12 +15,12 @@ public class Pessoa {
         return nome;
     }
 
-    public void setDadosVeiculo(List<Veiculo> dadosVeiculo) {
-        this.dadosVeiculo = dadosVeiculo;
+    public void setVeiculo(List<Veiculo> dadosVeiculo) {
+        this.veiculo = dadosVeiculo;
     }
 
-    public List<Veiculo> getDadosVeiculo() {
-        return dadosVeiculo;
+    public List<Veiculo> getVeiculo() {
+        return veiculo;
     }
 
     public void setOrcamento(List<Orcamento> orcamento) {

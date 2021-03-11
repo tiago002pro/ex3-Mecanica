@@ -20,7 +20,7 @@ public class PessoaService {
     public String cadastraPessoa(Map<String, String> json) {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome(json.get("nome"));
-        pessoa.setDadosVeiculo(new ArrayList<>());
+        pessoa.setVeiculo(new ArrayList<>());
         pessoa.setOrcamento(new ArrayList<>());
         pessoas.add(pessoa);
 
@@ -31,12 +31,4 @@ public class PessoaService {
         return pessoas;
     }
 
-//    public List<Orcamento> getOrcamentos() {
-//        Pessoa pessoa = new Pessoa();
-//        return pessoa.getOrcamento();
-//    }
-
-//    public Pessoa getPessoaId(Integer id) {
-//        return this.pessoas.get(id);
-//    }
 }
