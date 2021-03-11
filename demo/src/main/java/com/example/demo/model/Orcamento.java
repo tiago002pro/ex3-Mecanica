@@ -1,10 +1,11 @@
 package com.example.demo.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Orcamento {
     private LocalDate data;
-    private String avaliacao;
+    private List<Avaliacao> avaliacao;
     private Float valor;
     private Boolean aprovado = false;
 
@@ -16,11 +17,11 @@ public class Orcamento {
         return data;
     }
 
-    public void setAvaliacao(String avaliacao) {
+    public void setAvaliacao(List<Avaliacao> avaliacao) {
         this.avaliacao = avaliacao;
     }
 
-    public String getAvaliacao() {
+    public List<Avaliacao> getAvaliacao() {
         return avaliacao;
     }
 

@@ -1,9 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Orcamento;
-import com.example.demo.model.OrcamentoAprovado;
-import com.example.demo.model.Pessoa;
-import com.example.demo.model.Veiculo;
+import com.example.demo.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,24 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static java.lang.Float.parseFloat;
-
 @Service
 public class OrcamentoService {
 
     @Autowired
-    PessoaService pessoaService;
+    ClienteService clienteService;
 
     List<Orcamento> orcamentos = new ArrayList<>();
 
     public String geraOrcamento(Map<String, Object> json) {
-        Pessoa pessoa = pessoaService.pessoas.get((Integer) json.get("id"));
-        List<Orcamento> geraOrcamento = pessoa.getOrcamento();
+        Cliente cliente = clienteService.clientes.get((Integer) json.get("idCliente"));
+        List<Orcamento> geraOrcamento = cliente.getOrcamento();
         Orcamento orcamento = new Orcamento();
 
         orcamento.setData(LocalDate.now());
-        orcamento.setAvaliacao((String) json.get("avaliacao"));
-        orcamento.setValor(new Float ((Double) json.get("valor")));
+        orcamento.setAvaliacao(new ArrayList<>());
+        //orcamento.setValor(new Float ((Double) json.get("valor")));
         geraOrcamento.add(orcamento);
         orcamentos.add(orcamento);
 

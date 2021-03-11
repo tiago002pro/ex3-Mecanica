@@ -1,22 +1,49 @@
 package com.example.demo.model;
 
 public class Avaliacao {
-    private String descricao;
-    private Integer valor;
+    //private Pessoa pessoa;
+    private String item;
+    private Integer quantidade;
+    private Float valorUnitario;
+    private Float valorTotalItem;
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+//    public void setPessoa(Pessoa pessoa) {
+//        this.pessoa = pessoa;
+//    }
+//
+//    public Pessoa getPessoa() {
+//        return pessoa;
+//    }
+
+    public void setItem(String item) {
+        this.item = item;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getItem() {
+        return item;
     }
 
-    public void setValor(Integer valor) {
-        this.valor = valor;
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 
-    public Integer getValor() {
-        return valor;
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setValorUnitario(Float valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
+
+    public Float getValorUnitario() {
+        return valorUnitario;
+    }
+
+    public void setValorTotalItem(Float valorTotalItem) {
+        this.valorTotalItem = valorTotalItem;
+    }
+
+    public Float getValorTotalItem() {
+        return valorTotalItem;
     }
 }

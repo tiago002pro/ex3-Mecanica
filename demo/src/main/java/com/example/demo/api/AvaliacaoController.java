@@ -1,7 +1,7 @@
 package com.example.demo.api;
 
-import com.example.demo.model.Veiculo;
-import com.example.demo.service.VeiculoService;
+import com.example.demo.model.Avaliacao;
+import com.example.demo.service.AvaliacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class VeiculoController {
+public class AvaliacaoController {
 
     @Autowired
-    VeiculoService service;
+    AvaliacaoService service;
 
-    @PostMapping("/veiculo")
-    public String cadastraveiculo(@RequestBody Map<String, Object> json) {
-        return this.service.cadastraveiculo(json);
+    @PostMapping("avaliacao")
+    public String geraAvaliacao(@RequestBody Map<String, Object> json) {
+        return this.service.geraAvaliacao(json);
     }
 }

@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 import java.util.List;
 
-public class Pessoa {
+public class Cliente {
     private String nome;
     private List<Veiculo> veiculo;
     private List<Orcamento> orcamento;

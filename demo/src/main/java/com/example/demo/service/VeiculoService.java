@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Pessoa;
+import com.example.demo.model.Cliente;
 import com.example.demo.model.Veiculo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,23 +13,16 @@ import java.util.Map;
 public class VeiculoService {
 
     @Autowired
-    PessoaService pessoaService;
-
-    List<Veiculo> veiculos = new ArrayList<>();
-
-    public List<Veiculo> getVeiculos() {
-        return veiculos;
-    }
+    ClienteService clienteService;
 
     public String cadastraveiculo (Map<String, Object> json) {
-        Pessoa pessoa = pessoaService.pessoas.get((Integer) json.get("id"));
-        List<Veiculo> vinculaVeiculoPessoa = pessoa.getDadosVeiculo();
+        Cliente cliente = clienteService.clientes.get((Integer) json.get("id"));
+        List<Veiculo> vinculaVeiculoPessoa = cliente.getVeiculo();
         Veiculo veiculo = new Veiculo();
 
         veiculo.setNome((String) json.get("nome"));
         veiculo.setCor((String) json.get("cor"));
         vinculaVeiculoPessoa.add(veiculo);
-        veiculos.add(veiculo);
 
         return "Veículo cadastrado com Sucesso";
     }
