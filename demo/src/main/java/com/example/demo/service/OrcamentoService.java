@@ -14,11 +14,15 @@ public class OrcamentoService {
 
     @Autowired
         ClienteService clienteService;
+    @Autowired
+            FuncionarioService funcionarioService;
 
     List<Orcamento> orcamentos = new ArrayList<>();
     float valorTotalOcamento = 0;
 
     public String geraOrcamento(Map<String, Object> json) {
+        Funcionario funcionario = funcionarioService.funcionarios.get((Integer) json.get("idFuncionario"));
+        List<Orcamento> orcamentoFeitoPeloFuncionario = funcionario.getOrcamentos();
         Cliente cliente = clienteService.clientes.get((Integer) json.get("idCliente"));
         Orcamento orcamento = new Orcamento();
 
@@ -27,26 +31,26 @@ public class OrcamentoService {
         orcamento.setData(LocalDate.now());
         orcamento.setAvaliacao(new ArrayList<>());
         orcamento.setValorOrcamento(valorTotalOcamento);
-        //geraOrcamento.add(orcamento);
+        orcamentoFeitoPeloFuncionario.add(orcamento);
         orcamentos.add(orcamento);
 
         return "Orçamento gerado com sucesso!";
     }
 
-    public List<Orcamento> pegaOrcamento(Map<String, Object> json) {
+    public List<Orcamento> orcamentosPorCliente(Map<String, Object> json) {
         Cliente cliente = clienteService.clientes.get((Integer) json.get("idCliente"));
-        List<Orcamento> lista = new ArrayList<>();
+        List<Orcamento> listaOrcamentosPorCliente = new ArrayList<>();
 
 
 //        for (int x=0; x<orcamentos.size(); x++) {
 //            Orcamento orcamento = orcamentos.get(x);
         for (Orcamento orcamento : orcamentos) {
             if (orcamento.getPessoa().equals(cliente)) {
-                lista.add(orcamento);
+                listaOrcamentosPorCliente.add(orcamento);
             }
         }
 
-        return lista;
+        return listaOrcamentosPorCliente;
     }
     
     public void calculaValorTotalOrcamento(Float totalItem) {

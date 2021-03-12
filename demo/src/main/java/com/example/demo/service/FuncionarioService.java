@@ -2,9 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.Funcionario;
 import com.example.demo.model.Orcamento;
-import com.example.demo.model.Pessoa;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.support.NullValue;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -24,8 +22,8 @@ public class FuncionarioService {
         Funcionario funcionario = new Funcionario();
 
         funcionario.setNome((String) json.get("nome"));
-        funcionario.setFuncionario(true);
         funcionario.setSetor((String) json.get("setor"));
+        funcionario.setOrcamentos(new ArrayList<>());
         funcionarios.add(funcionario);
 
         return "Funcionário cadastrado com sucesso!";
@@ -36,18 +34,17 @@ public class FuncionarioService {
     }
 
     public String aprovaOrcamento(Map<String, Object> json) {
-        //Funcionario funcionario = funcionarios.get((Integer) json.get("idFuncionario"));
+        Funcionario funcionario = funcionarios.get((Integer) json.get("idFuncionario"));
+        List<Orcamento> orcamentoFeitoPeloFuncionario = funcionario.getOrcamentos();
         Orcamento orcamento = orcamentoService.orcamentos.get((Integer) json.get("idOrçamento"));
 
-        //if (funcionario.getFuncionario()) {
-            orcamento.setAprovado(true);
-            orcamento.setValorOrcamento(orcamentoService.valorTotalOcamento);
-            orcamento.setDataAprovado(LocalDate.now());
-            orcamento.setDiasTrabalhados(0);
+        orcamento.setAprovado(true);
+        orcamento.setValorOrcamento(orcamentoService.valorTotalOcamento);
+        orcamento.setDataAprovado(LocalDate.now());
+        orcamentoFeitoPeloFuncionario.replaceAll(orcamento1 -> orcamento);
 
-            return "Orçamento aprovado!";
-        //} else {
-           // return "Você não tem permissão para executar essa tarefa.";
-        //}
+        orcamento.setDiasTrabalhados(0);
+
+        return "Orçamento aprovado!";
     }
 }

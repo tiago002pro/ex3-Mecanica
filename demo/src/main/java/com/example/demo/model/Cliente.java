@@ -17,8 +17,4 @@ public class Cliente extends Pessoa{
         return super.getNome();
     }
 
-    public Boolean getFuncionario() {
-        return super.getFuncionario();
-    }
-
 }

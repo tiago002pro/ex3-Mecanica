@@ -24,7 +24,7 @@ public class OrcamentoController {
 
     @GetMapping("/orcamentos/cliente")
     public List<Orcamento> pegaOrcamento(@RequestBody Map<String, Object> json) {
-        return this.service.pegaOrcamento(json);
+        return this.service.orcamentosPorCliente(json);
     }
 
 
