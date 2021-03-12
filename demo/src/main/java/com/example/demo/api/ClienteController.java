@@ -14,17 +14,17 @@ public class ClienteController {
     @Autowired
     ClienteService service;
 
-    @PostMapping("/pessoa")
+    @PostMapping("/cliente")
     public String cadastraCliente(@RequestBody Map<String, String> json) {
         return this.service.cadastraCliente(json);
     }
 
-    @GetMapping("/pessoas")
+    @GetMapping("/clientes")
     public List<Cliente> getClientes() {
         return this.service.getClientes();
     }
 
-    @GetMapping("/pessoa/{id}")
+    @GetMapping("/cliente/{id}")
     public Cliente getClienteId(@PathVariable Long id) {
         return this.service.getClientes().get(Math.toIntExact(id));
     }

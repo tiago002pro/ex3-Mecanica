@@ -13,48 +13,47 @@ import java.util.Map;
 public class OrcamentoService {
 
     @Autowired
-    ClienteService clienteService;
+        ClienteService clienteService;
 
     List<Orcamento> orcamentos = new ArrayList<>();
+    float valorTotalOcamento = 0;
 
     public String geraOrcamento(Map<String, Object> json) {
         Cliente cliente = clienteService.clientes.get((Integer) json.get("idCliente"));
-        List<Orcamento> geraOrcamento = cliente.getOrcamento();
         Orcamento orcamento = new Orcamento();
 
+        orcamento.setAprovado(false);
+        orcamento.setPessoa(cliente);
         orcamento.setData(LocalDate.now());
         orcamento.setAvaliacao(new ArrayList<>());
-        //orcamento.setValor(new Float ((Double) json.get("valor")));
-        geraOrcamento.add(orcamento);
+        orcamento.setValorOrcamento(valorTotalOcamento);
+        //geraOrcamento.add(orcamento);
         orcamentos.add(orcamento);
 
         return "Orçamento gerado com sucesso!";
     }
 
+    public List<Orcamento> pegaOrcamento(Map<String, Object> json) {
+        Cliente cliente = clienteService.clientes.get((Integer) json.get("idCliente"));
+        List<Orcamento> lista = new ArrayList<>();
+
+
+//        for (int x=0; x<orcamentos.size(); x++) {
+//            Orcamento orcamento = orcamentos.get(x);
+        for (Orcamento orcamento : orcamentos) {
+            if (orcamento.getPessoa().equals(cliente)) {
+                lista.add(orcamento);
+            }
+        }
+
+        return lista;
+    }
+    
+    public void calculaValorTotalOrcamento(Float totalItem) {
+        valorTotalOcamento = valorTotalOcamento + totalItem;
+    }
+
     public List<Orcamento> getOrcamentos() {
         return orcamentos;
     }
-
-    List<Orcamento> orcamentosAprovados = new ArrayList<>();
-
-    public String aprovaOrcamento(Map<String, Object> json) {
-        Orcamento orcamento = orcamentos.get((Integer) json.get("id"));
-        OrcamentoAprovado orcamentoAprovado = new OrcamentoAprovado();
-
-        orcamentoAprovado.setData(orcamento.getData());
-        orcamentoAprovado.setAvaliacao(orcamento.getAvaliacao());
-        orcamentoAprovado.setValor(orcamento.getValor());
-        orcamentoAprovado.setAprovado(true);
-        orcamentoAprovado.setDataOrcamentoAprovado(LocalDate.now());
-        orcamentoAprovado.setDiasTrabalhados(5);
-
-        orcamentosAprovados.add(orcamentoAprovado);
-        orcamentos.add(orcamentoAprovado);
-        return "Orçamento aprovado";
-    }
-
-    public List<Orcamento> getOrcamentoAprovados() {
-        return orcamentosAprovados;
-    }
-
 }

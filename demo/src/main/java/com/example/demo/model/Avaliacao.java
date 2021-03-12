@@ -1,19 +1,10 @@
 package com.example.demo.model;
 
 public class Avaliacao {
-    //private Pessoa pessoa;
     private String item;
     private Integer quantidade;
     private Float valorUnitario;
     private Float valorTotalItem;
-
-//    public void setPessoa(Pessoa pessoa) {
-//        this.pessoa = pessoa;
-//    }
-//
-//    public Pessoa getPessoa() {
-//        return pessoa;
-//    }
 
     public void setItem(String item) {
         this.item = item;

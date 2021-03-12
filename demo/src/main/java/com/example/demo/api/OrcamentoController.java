@@ -2,7 +2,6 @@ package com.example.demo.api;
 
 import com.example.demo.model.Orcamento;
 import com.example.demo.service.OrcamentoService;
-import com.example.demo.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,29 +15,18 @@ import java.util.Map;
 public class OrcamentoController {
 
     @Autowired
-    OrcamentoService service;
-
-    @Autowired
-    ClienteService clienteService;
+        OrcamentoService service;
 
     @PostMapping("/orcamento")
     public String geraOrcamento (@RequestBody Map<String, Object> json) {
         return this.service.geraOrcamento(json);
     }
 
-    //Quero retornar somente os orçamentos
-    @GetMapping("/orcamentos")
-    public List<Orcamento> getOrcamentos() {
-        return this.service.getOrcamentos();
+    @GetMapping("/orcamentos/cliente")
+    public List<Orcamento> pegaOrcamento(@RequestBody Map<String, Object> json) {
+        return this.service.pegaOrcamento(json);
     }
 
-    @PostMapping("/orcamentoAprovado")
-    public String aprovaOrcamento(@RequestBody Map<String, Object> json) {
-        return this.service.aprovaOrcamento(json);
-    }
 
-    @GetMapping("/orcamentosAprovados")
-    public List<Orcamento> getOrcamentosAprovados() {
-        return this.service.getOrcamentoAprovados();
-    }
+
 }

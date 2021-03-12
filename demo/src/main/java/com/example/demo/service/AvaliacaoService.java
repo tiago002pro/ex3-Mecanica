@@ -23,8 +23,12 @@ public class AvaliacaoService {
         avaliacao.setQuantidade((Integer) json.get("Quantidade"));
         avaliacao.setValorUnitario(new Float((Double) json.get("ValorUnitario")));
         avaliacao.setValorTotalItem(avaliacao.getQuantidade() * avaliacao.getValorUnitario());
+        orcamentoService.calculaValorTotalOrcamento(avaliacao.getValorTotalItem());
+        orcamento.setValorOrcamento(orcamentoService.valorTotalOcamento);
         insereNoOrcamento.add(avaliacao);
 
-        return "Avaliação gerada com sucesso!";
+        return "Avaliação adicionada ao orçamento!";
     }
+
+
 }

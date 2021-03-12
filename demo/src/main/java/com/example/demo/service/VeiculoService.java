@@ -24,7 +24,7 @@ public class VeiculoService {
         veiculo.setCor((String) json.get("cor"));
         vinculaVeiculoPessoa.add(veiculo);
 
-        return "Veículo cadastrado com Sucesso";
+        return "Veículo cadastrado com Sucesso!";
     }
 
 }

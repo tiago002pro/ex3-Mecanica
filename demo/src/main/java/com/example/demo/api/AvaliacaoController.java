@@ -17,7 +17,7 @@ public class AvaliacaoController {
     @Autowired
     AvaliacaoService service;
 
-    @PostMapping("avaliacao")
+    @PostMapping("/avaliacao")
     public String geraAvaliacao(@RequestBody Map<String, Object> json) {
         return this.service.geraAvaliacao(json);
     }
