@@ -33,5 +33,9 @@ public class FuncionarioController {
         return this.service.aprovaOrcamento(json);
     }
 
+    @PostMapping("/funcionario/dias/trabalhados")
+    public String insereDiasTrabalhados(@RequestBody Map<String, Object> json) {
+        return this.service.insereDiasTrabalhados(json);
+    }
 
 }

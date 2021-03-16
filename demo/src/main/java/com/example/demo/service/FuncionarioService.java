@@ -41,10 +41,20 @@ public class FuncionarioService {
         orcamento.setAprovado(true);
         orcamento.setValorOrcamento(orcamentoService.valorTotalOcamento);
         orcamento.setDataAprovado(LocalDate.now());
+        orcamento.setDiasTrabalhados(0);
         orcamentoFeitoPeloFuncionario.replaceAll(orcamento1 -> orcamento);
 
-        orcamento.setDiasTrabalhados(0);
-
         return "Orçamento aprovado!";
+    }
+
+    public String insereDiasTrabalhados(Map<String, Object> json) {
+        Funcionario funcionario = funcionarios.get((Integer) json.get("idFuncionario"));
+        List<Orcamento> orcamentoFeitoPeloFuncionario = funcionario.getOrcamentos();
+        Orcamento orcamento = orcamentoService.orcamentos.get((Integer) json.get("idOrçamento"));
+
+        orcamento.setDiasTrabalhados((Integer) json.get("DiasTrabalhados"));
+        orcamentoFeitoPeloFuncionario.replaceAll(orcamento1 -> orcamento);
+
+        return "Inserido com sucesso!";
     }
 }
