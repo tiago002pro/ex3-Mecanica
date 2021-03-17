@@ -14,7 +14,7 @@ public class VeiculoController {
     @Autowired
     VeiculoService service;
 
-    @PostMapping("/veiculo")
+    @PostMapping("/veiculos")
     public String cadastraveiculo(@RequestBody Map<String, Object> json) {
         return this.service.cadastraveiculo(json);
     }

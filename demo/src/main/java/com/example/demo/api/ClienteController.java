@@ -14,7 +14,7 @@ public class ClienteController {
     @Autowired
     ClienteService service;
 
-    @PostMapping("/cliente")
+    @PostMapping("/clientes")
     public String cadastraCliente(@RequestBody Map<String, String> json) {
         return this.service.cadastraCliente(json);
     }
@@ -24,7 +24,7 @@ public class ClienteController {
         return this.service.getClientes();
     }
 
-    @GetMapping("/cliente/{id}")
+    @GetMapping("/clientes/{id}")
     public Cliente getClienteId(@PathVariable Long id) {
         return this.service.getClientes().get(Math.toIntExact(id));
     }

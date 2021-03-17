@@ -17,12 +17,12 @@ public class OrcamentoController {
     @Autowired
         OrcamentoService service;
 
-    @PostMapping("/orcamento")
+    @PostMapping("/orcamentos")
     public String geraOrcamento (@RequestBody Map<String, Object> json) {
         return this.service.geraOrcamento(json);
     }
 
-    @GetMapping("/orcamentos/cliente")
+    @GetMapping("/orcamentos/cliente/{id}")
     public List<Orcamento> pegaOrcamento(@RequestBody Map<String, Object> json) {
         return this.service.orcamentosPorCliente(json);
     }
