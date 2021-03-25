@@ -14,7 +14,7 @@ public class ClienteService {
 
     public String cadastraCliente(Map<String, String> json) {
         Cliente cliente = new Cliente();
-        cliente.setNome(json.get("nome"));
+        cliente.setNome(json.get("Nome"));
         cliente.setVeiculo(new ArrayList<>());
         clientes.add(cliente);
 

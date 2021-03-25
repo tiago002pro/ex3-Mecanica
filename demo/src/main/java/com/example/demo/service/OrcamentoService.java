@@ -20,8 +20,8 @@ public class OrcamentoService {
     List<Orcamento> orcamentos = new ArrayList<>();
     float valorTotalOcamento = 0;
 
-    public String geraOrcamento(Map<String, Object> json) {
-        Funcionario funcionario = funcionarioService.funcionarios.get((Integer) json.get("idFuncionario"));
+    public String geraOrcamento(Integer idFuncionario, Map<String, Object> json) {
+        Funcionario funcionario = funcionarioService.funcionarios.get(idFuncionario);
         List<Orcamento> orcamentoFeitoPeloFuncionario = funcionario.getOrcamentos();
         Cliente cliente = clienteService.clientes.get((Integer) json.get("idCliente"));
         Orcamento orcamento = new Orcamento();
@@ -37,8 +37,8 @@ public class OrcamentoService {
         return "Orçamento gerado com sucesso!";
     }
 
-    public List<Orcamento> orcamentosPorCliente(Map<String, Object> json) {
-        Cliente cliente = clienteService.clientes.get((Integer) json.get("idCliente"));
+    public List<Orcamento> orcamentosPorCliente(Integer idCliente) {
+        Cliente cliente = clienteService.clientes.get(idCliente);
         List<Orcamento> listaOrcamentosPorCliente = new ArrayList<>();
 
 

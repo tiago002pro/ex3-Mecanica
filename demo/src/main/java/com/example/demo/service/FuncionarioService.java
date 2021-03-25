@@ -21,8 +21,8 @@ public class FuncionarioService {
     public String cadastraFuncionario(Map<String, Object> json) {
         Funcionario funcionario = new Funcionario();
 
-        funcionario.setNome((String) json.get("nome"));
-        funcionario.setSetor((String) json.get("setor"));
+        funcionario.setNome((String) json.get("Nome"));
+        funcionario.setSetor((String) json.get("Setor"));
         funcionario.setOrcamentos(new ArrayList<>());
         funcionarios.add(funcionario);
 
@@ -33,10 +33,10 @@ public class FuncionarioService {
         return funcionarios;
     }
 
-    public String aprovaOrcamento(Map<String, Object> json) {
+    public String aprovaOrcamento(Integer idOrcamento, Map<String, Object> json) {
         Funcionario funcionario = funcionarios.get((Integer) json.get("idFuncionario"));
         List<Orcamento> orcamentoFeitoPeloFuncionario = funcionario.getOrcamentos();
-        Orcamento orcamento = orcamentoService.orcamentos.get((Integer) json.get("idOrçamento"));
+        Orcamento orcamento = orcamentoService.orcamentos.get(idOrcamento);
 
         orcamento.setAprovado(true);
         orcamento.setValorOrcamento(orcamentoService.valorTotalOcamento);
@@ -47,10 +47,10 @@ public class FuncionarioService {
         return "Orçamento aprovado!";
     }
 
-    public String insereDiasTrabalhados(Map<String, Object> json) {
+    public String insereDiasTrabalhados(Integer idOrcamento, Map<String, Object> json) {
         Funcionario funcionario = funcionarios.get((Integer) json.get("idFuncionario"));
         List<Orcamento> orcamentoFeitoPeloFuncionario = funcionario.getOrcamentos();
-        Orcamento orcamento = orcamentoService.orcamentos.get((Integer) json.get("idOrçamento"));
+        Orcamento orcamento = orcamentoService.orcamentos.get(idOrcamento);
 
         orcamento.setDiasTrabalhados((Integer) json.get("DiasTrabalhados"));
         orcamentoFeitoPeloFuncionario.replaceAll(orcamento1 -> orcamento);

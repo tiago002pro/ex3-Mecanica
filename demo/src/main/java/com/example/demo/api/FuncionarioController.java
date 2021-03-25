@@ -25,14 +25,14 @@ public class FuncionarioController {
         return this.service.getFuncionarios();
     }
 
-    @PostMapping("/funcionario/aprovar")
-    public String aprovaOrcamento(@RequestBody Map<String, Object> json) {
-        return this.service.aprovaOrcamento(json);
+    @PostMapping("/funcionario/aprova-orcamento/{id}")
+    public String aprovaOrcamento(@PathVariable Integer id, @RequestBody Map<String, Object> json) {
+        return this.service.aprovaOrcamento(id, json);
     }
 
-    @PostMapping("/funcionario/inserir")
-    public String insereDiasTrabalhados(@RequestBody Map<String, Object> json) {
-        return this.service.insereDiasTrabalhados(json);
+    @PostMapping("/funcionario/insere-diasTrabalhados/orcamento/{id}")
+    public String insereDiasTrabalhados(@PathVariable Integer id, @RequestBody Map<String, Object> json) {
+        return this.service.insereDiasTrabalhados(id, json);
     }
 
 }
